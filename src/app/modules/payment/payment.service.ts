@@ -1,6 +1,6 @@
 import Stripe from 'stripe';
 
-const DOMAIN = 'https://shoehouse-frontend.vercel.app';
+const DOMAIN = 'https://tradingcar-frontend.vercel.app';
 
 const stripeApiKey = process.env.STRIPE_KEY;
 
