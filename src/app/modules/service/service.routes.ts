@@ -7,9 +7,17 @@ import { UserRole } from '../../../enum/user';
 
 
 
-router.post('/:id/add-review', ServiceController.addReview);
-router.post('/',auth(UserRole.Admin,UserRole.Super_Admin), ServiceController.createService);
-router.patch('/:id', ServiceController.updateServiceById);
+router.post(
+  '/:id/add-review',
+  auth(UserRole.Admin, UserRole.Super_Admin, UserRole.User),
+  ServiceController.addReview
+);
+router.post('/',auth(UserRole.Admin,UserRole.Super_Admin,UserRole.User), ServiceController.createService);
+router.patch(
+  '/:id',
+  auth(UserRole.Admin, UserRole.Super_Admin, UserRole.User),
+  ServiceController.updateServiceById
+);
 router.get('/search',auth(UserRole.Admin,UserRole.Super_Admin,UserRole.User), ServiceController.searchServices);
 router.get(
   '/',
@@ -23,7 +31,7 @@ router.get(
 );
 router.delete(
   '/:id',
-  auth(UserRole.Admin, UserRole.Super_Admin),
+  auth(UserRole.Admin, UserRole.Super_Admin, UserRole.User),
   ServiceController.deleteServiceById
 );
 

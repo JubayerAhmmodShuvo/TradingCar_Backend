@@ -16,7 +16,6 @@ const createPayment: RequestHandler = async (req, res, next) => {
 
     const payment = new PaymentModel(paymentData);
     await payment.save();
-
     res.status(200).json({
       status: 200,
       message: 'payment created successfully',
